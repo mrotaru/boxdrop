@@ -1,0 +1,20 @@
+body
+{
+    background-color: cornsilk;
+    width: 80%;
+}
+
+#navigation
+{
+    position: absolute;
+    left: 0;
+    width: 10em;
+}
+
+#content
+{
+    margin-left: 10em;
+    background-color: lavenderblush;
+    font: 18px Georgia;
+    padding: 20px;
+}
