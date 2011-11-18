@@ -85,3 +85,38 @@ body
     height: 400px;
     overflow: auto;
 }
+
+#content-no-margin h2
+{
+    font: 24px "Arial Narrow";
+}
+
+#content-no-margin
+{
+    background-color: #F2F2F2;
+    font: 18px Georgia;
+    padding: 20px;
+    height: 400px;
+    overflow: auto;
+}
+
+.button
+{
+    margin: 0 0 10px 0;
+    padding: 4px 7px;
+    width:  100px;
+    border: 0px;
+    border-bottom: 2px double #342E3D;
+    border-top:    1px double #342E3D;
+    border-left:   1px double #342E3D;
+    border-right:  2px double #342E3D;
+    color: #DBCCCE;
+    background-color: #8A6D81;
+    font: bold small-caps 14px Verdana;
+}
+
+.button:hover
+{
+    color: white;
+    background-color: #BD95B0;
+}
