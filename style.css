@@ -80,6 +80,23 @@ body
     padding: 10px;
     background-color: #B5919A;
     height: 30px;
+    color: #342E3D;
+    font: 10px Verdana;
+    clear: both;
+    text-align: center;
+}
+
+#footer a
+{
+    color: #342E3D;
+    border-bottom: 1px dotted #8A6D81;
+    text-decoration: none;
+}
+
+#footer a:hover
+{
+    background-color: #DBCCCE;
+    border-bottom: 1px solid #8A6D81;
 }
 
 #container
@@ -142,7 +159,13 @@ body
     color: #342E3D;
     border-bottom: 1px dotted #8A6D81;
     text-decoration: none;
+}
 
+#small-navigation a:hover
+{
+    color: #342E3D;
+    border-bottom: 1px dotted #8A6D81;
+    text-decoration: none;
 }
 
 #small-navigation li
