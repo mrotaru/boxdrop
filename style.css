@@ -120,3 +120,16 @@ body
     color: white;
     background-color: #BD95B0;
 }
+
+/* , #register:active*/
+#login:active
+{
+    border: 0px;
+    border-bottom: 1px double #342E3D;
+    border-top:    2px double #342E3D;
+    border-left:   2px double #342E3D;
+    border-right:  1px double #342E3D;
+    color: #DBCCCE;
+    background-color: #8A6D81;
+    outline: none;
+}
