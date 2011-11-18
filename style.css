@@ -110,6 +110,26 @@ body
     overflow: auto;
 }
 
+form#login
+{
+    font: 16px Calibri;
+}
+
+form label
+{
+    clear: left;
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+#login-button, #register-button
+{
+    margin-top: 10px;
+    margin-left: 10em;
+}
+
 #content-no-margin h2
 {
     font: 24px "Arial Narrow";
@@ -118,7 +138,7 @@ body
 #content-no-margin
 {
     background-color: #F2F2F2;
-    font: 18px Georgia;
+    font: 16px Calibri;
     padding: 20px;
     height: 400px;
     overflow: auto;

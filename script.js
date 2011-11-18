@@ -1,3 +1,11 @@
+function onClickLogin() {
+    window.location="login.html";
+}
+
+function onClickRegister() {
+    window.location="register.html";
+}
+
 // rudimentary function to morph from one colour to another
 function changeElementColour( element, R2, G2, B2, current_step, total_steps ) {
     
