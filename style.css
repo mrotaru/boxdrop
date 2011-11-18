@@ -10,6 +10,8 @@ body
 {
     background-color: #B5919A;
     border-bottom: 2px solid black;
+    height: 5.3em;
+    clear: both;
 }
 
 #header h1
@@ -33,6 +35,33 @@ body
     position: relative;
     padding: 20px;
     width: 150px;
+    float: left;
+}
+
+#search-div
+{
+    float: right;
+    margin: 10px;
+}
+
+#search
+{
+    height: 22px;
+    position: relative;
+    right: -3px;
+    top: 2px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid;
+    border-radius: 10px 0 0 10px;
+    color: gray;
+    font: italic bold 12px Verdana;
+    background-color: #DBCCCE;
+}
+
+#search:hover
+{
+    background-color: #F2F2F2;
 }
 
 #make-div-link
@@ -100,6 +129,43 @@ body
     background-color: #635369;
 }
 
+#small-navigation
+{
+    font: 11px Verdana;
+    float: right;
+    position: relative;
+    top: 0.8em;
+}
+
+#small-navigation a
+{
+    color: #342E3D;
+    border-bottom: 1px dotted #8A6D81;
+    text-decoration: none;
+
+}
+
+#small-navigation li
+{
+    white-space: nowrap;
+    display: inline;
+    border-right: 1px solid #8A6D81;
+    padding: 0 0.75em;
+}
+
+#small-navigation a:hover
+{
+    background-color: #DBCCCE;
+    border-bottom: 1px solid #8A6D81;
+}
+
+#small-navigation ul
+{
+    font-size: 10px;
+    list-style: none outside none;
+    text-align: right;
+}
+
 #content
 {
     margin-left: 9em;
@@ -137,6 +203,7 @@ form label
 
 #content-no-margin
 {
+    clear: both;
     background-color: #F2F2F2;
     font: 16px Calibri;
     padding: 20px;
@@ -166,6 +233,42 @@ form label
 }
 
 .button:active
+{
+    margin-top:    0px;
+    border-bottom: 1px solid #342E3D;
+    border-top:    2px solid #342E3D;
+    border-left:   2px solid #342E3D;
+    border-right:  1px solid #342E3D;
+    color: #DBCCCE;
+    background-color: #8A6D81;
+}
+
+.button-small
+{
+    margin: 0px;
+    margin-top:    1px;
+    padding-bottom: 3px;
+    position: relative;
+    top: 1px;
+    width:  100px;
+    border-radius: 0 10px 10px 0;
+    border-bottom: 2px solid #342E3D;
+    border-top:    1px solid #342E3D;
+    border-left:   1px solid #342E3D;
+    border-right:  2px solid #342E3D;
+    color: #DBCCCE;
+    height: 24px;
+    background-color: #8A6D81;
+    font: bold small-caps 12px Verdana;
+}
+
+.button-small:hover
+{
+    color: white;
+    background-color: #BD95B0;
+}
+
+.button-small:active
 {
     margin-top:    0px;
     border-bottom: 1px solid #342E3D;
