@@ -3,6 +3,7 @@
 
 <html>
 
+<?php require_once( "includes/functions.php" ); ?>
 <?php include( "includes/head.php" ); ?>
 
 <body>
