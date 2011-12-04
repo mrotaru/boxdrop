@@ -3,6 +3,7 @@
 
 <html>
 
+<?php require_once( "includes/connection.php" ); ?>
 <?php require_once( "includes/functions.php" ); ?>
 <?php include( "includes/head.php" ); ?>
 
@@ -21,6 +22,10 @@
             <p>
             You need to be logged in to use the service.
             </p>
+
+            <?php
+            show_databases();
+            ?>
 
             <input type='button' class='button' value='Login'    onclick="return onClickLogin()" />
             <input type='button' class='button' value='Register' onclick="return onClickRegister()" />

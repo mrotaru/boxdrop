@@ -2,6 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 
+<?php require_once( "includes/connection.php" ); ?>
 <?php require_once( "includes/functions.php" ); ?>
 <?php include( "includes/head.php" ); ?>
 
