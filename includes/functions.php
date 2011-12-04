@@ -15,9 +15,13 @@ function show_databases()
     {
         echo( "<br/>" );
         echo( "Databases: " );
-        echo( "<br/>" );
-        echo( "'" . "$dbs" . "'");
-        echo( "<br/>" );
+        echo( "<hr/>" );
+
+        while( $db = mysql_fetch_array( $dbs ))
+        {
+            echo $db[0] . "<br/>";
+        }
+        echo( "<hr/>" );
     }
 }
 
