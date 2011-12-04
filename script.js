@@ -1,9 +1,9 @@
 function onClickLogin() {
-    window.location="login.html";
+    window.location="login.php";
 }
 
 function onClickRegister() {
-    window.location="register.html";
+    window.location="register.php";
 }
 
 function onClickSearch() {
