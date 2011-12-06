@@ -25,4 +25,13 @@ function show_databases()
     }
 }
 
+// die if query has not been executed successfully
+function check_query( $result_set )
+{
+    if( !$result_set )
+    {
+        die( "Database query failed: " . mysql_error() );
+    }
+}
+
 ?>

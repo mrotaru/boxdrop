@@ -24,7 +24,7 @@
             </p>
 
             <?php
-            show_databases();
+//            show_databases();
             ?>
 
             <input type='button' class='button' value='Login'    onclick="return onClickLogin()" />

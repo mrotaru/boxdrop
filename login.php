@@ -11,12 +11,12 @@
         <?php include( "includes/header.php" ); ?>
         
         <div id="content-no-margin">
-            <form id="login" name="login">
+            <form id="login" action="process_login.php" method="post" name="login">
                 <fieldset>
                     <legend>Login Details</legend>
-                    <label for="name">    User ID: </label><input type="text" id="name" name="name"><br/>
+                    <label for="username">User ID: </label><input type="text" id="username" name="username"><br/>
                     <label for="password">Password:</label><input type="password" name="password"><br/>
-                    <input type='button' id='login-button' class='button' value='Login'/>
+                    <input type='submit' id='login-button' name="submit" class='button' value='Login'/>
                 </fieldset>
             </form>
         </div>
