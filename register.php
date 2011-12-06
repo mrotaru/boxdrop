@@ -11,14 +11,14 @@
         <?php include( "includes/header.php" ); ?>
 
         <div id="content-no-margin">
-            <form id="login" name="login">
+            <form id="register" action="process_register.php" method="post" name="register">
                 <fieldset>
                     <legend>Your Details</legend>
-                    <label for="name">    User ID: </label><input type="text" id="name" name="name"><br/>
+                    <label for="username">    User ID: </label><input type="text" id="username" name="username"><br/>
                     <label for="email">   Email: </label><input type="text" id="email" name="email"><br/>
-                    <label for="password">Password:</label><input type="password" name="password"><br/>
-                    <label for="password">Password:</label><input type="password" name="password"><br/>
-                    <input type='button' id='register-button' class='button' value='Register'/>
+                    <label for="password">Password:</label><input type="password" name="password1"><br/>
+                    <label for="password">Password:</label><input type="password" name="password2"><br/>
+                    <input type='submit' id='register-button' class='button' value='Register'/>
                 </fieldset>
         </div>
 

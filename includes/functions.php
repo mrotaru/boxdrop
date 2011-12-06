@@ -77,11 +77,20 @@ function mysql_prep( $string ) {
 // from: PHP and MySQL Web Development 4th Edition, p.619
 function valid_email( $email )
 {
-    if( ereg('^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+.[a-zA-Z0-9\-\.]+$', $email ))
+    if( @ereg('^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+.[a-zA-Z0-9\-\.]+$', $email ))
     {
         return true;
     }
     return false;
+}
+                
+// register a new user
+function register( $username, $email, $password )
+{
+    $result = mysql_query( "
+        INSERT INTO USERS VALUES
+        ( '', '" . $username . "', '" . $password . "', '" . $email . "')" );
+    check_query( $result );
 }
 
 ?>
