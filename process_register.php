@@ -31,8 +31,8 @@
 
                 // --> check: chosen user name is not taken -------------------
                 $query = 
-                    "SELECT * from users
-                     WHERE name = \"${username}\"";
+                    "SELECT * FROM users
+                     WHERE username = '$username'";
                 $found_user = mysql_query( $query );
                 check_query( $found_user );
         

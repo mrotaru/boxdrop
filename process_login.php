@@ -19,7 +19,7 @@
             
             $query = 
                 "SELECT * from users
-                 WHERE name = \"${username}\"";
+                 WHERE username = '${username}'";
             $found_user = mysql_query( $query );
             check_query( $found_user );
     
@@ -33,14 +33,15 @@
                 // check password
                 $query = 
                     "SELECT * from users
-                    WHERE name = \"${username}\" 
-                    AND password =\"${password}\"";
+                    WHERE username = '${username}' 
+                    AND password ='${password}'";
                 $users_password = mysql_query( $query );
                 check_query( $users_password );
 
                 if( mysql_num_rows( $users_password ) !=0  ) 
                 {
-                    echo( "you are logged in!" );
+                    echo( "you are logged in!<br/>
+                        but nothing happened; functionality under construction" );
                 } 
                 else 
                 {

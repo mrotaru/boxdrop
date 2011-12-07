@@ -4,6 +4,9 @@
 <html>
 
 <?php require_once( "includes/connection.php" ); ?>
+<?php
+//require( "includes/constants.php" );
+?>
 <?php require_once( "includes/functions.php" ); ?>
 <?php include( "includes/head.php" ); ?>
 
@@ -24,7 +27,23 @@
             </p>
 
             <?php
-//            show_databases();
+            
+//            // delete table
+//            echo(" DELETING TABLE users ------------------------</br>");
+//            $res = mysql_query( "DROP TABLE users" );
+//            check_query( $res );
+
+//            // create table
+//            echo(" CREATING TABLE USERS 0000000-----------------</br>");
+//            $res = mysql_query( " CREATE TABLE users (
+//                                        id int(11) NOT NULL auto_increment,
+//                                        username varchar(30) NOT NULL,
+//                                        email varchar(30) NOT NULL,
+//                                        password varchar(30) NOT NULL,
+//                                        PRIMARY KEY (id)
+//                                    )");
+//            check_query( $res );
+
             ?>
 
             <input type='button' class='button' value='Login'    onclick="return onClickLogin()" />
