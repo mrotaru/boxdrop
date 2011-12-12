@@ -30,9 +30,10 @@
                 }
 
                 // --> check: chosen user name is not taken -------------------
-                $query = 
-                    "SELECT * FROM users
-                     WHERE username = '$username'";
+                $query = "
+                    SELECT * FROM users 
+                    WHERE username = '$username'
+                    ";
                 $found_user = mysql_query( $query );
                 check_query( $found_user );
         
@@ -64,7 +65,8 @@
                         entered in both the 'Password' fields." );
                 }
 
-                register( $username, $email, $password1 );
+                $hashed_password = sha1( $password1 );
+                register( $username, $email, $hashed_password );
                 $_SESSION['valid_user'] = $username;
 
 

@@ -31,10 +31,13 @@
             else 
             {
                 // check password
+                $hashed_password = sha1( $password );
                 $query = 
-                    "SELECT * from users
+                    "
+                    SELECT * from users
                     WHERE username = '${username}' 
-                    AND password ='${password}'";
+                    AND hashed_password ='${hashed_password}'
+                    ";
                 $users_password = mysql_query( $query );
                 check_query( $users_password );
 
