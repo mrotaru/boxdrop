@@ -1,3 +1,5 @@
+<?php require_once( "includes/session.php" ); ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
@@ -43,8 +45,13 @@
 
                 if( mysql_num_rows( $users_password ) !=0  ) 
                 {
-                    echo( "you are logged in!<br/>
-                        but nothing happened; functionality under construction" );
+                    echo( "you are logged in!<br/>" );
+                    
+                    $found_user = mysql_fetch_array( $users_password );
+//                    print_r( $found_user );
+                    
+                    $_SESSION[ 'user_id' ] = $found_user[ 'id' ];
+                    $_SESSION[ 'user_name' ] = $found_user[ 'username' ];
                 } 
                 else 
                 {

@@ -1,3 +1,5 @@
+<?php require_once( "includes/session.php" ); ?>
+
 <div id="header">
     <div id="logo">
         <h1><span class='h1-initial'>B</span>ox<span class='h1-initial'>D</span>rop</h1>
@@ -9,7 +11,22 @@
     </div>
     <div id="small-navigation">
         <ul>
-            <li> <a href="login.php">Login </a></li>
+            <li>
+            <?php
+            if( isset( $_SESSION[ 'user_name' ] ))
+            {
+                $user_name = $_SESSION[ 'user_name' ];
+                echo( "
+                    logged in as: {$user_name} 
+                    <li> <a href=\"logout.php\">Logout</a></li>"
+                );
+            }
+            else
+                echo( "
+                    <li> <a href=\"login.php\">Login </a></li>
+                    ");
+            ?>
+            </li>
             <li> <a href="preferences.php"> Preferences </a></li>
             <li> <a href="help.php"> Help </a></li>
             <li> <a href="index.php"> About </a></li>

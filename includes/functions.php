@@ -111,4 +111,16 @@ function show_all_users()
     }
 }
 
+// uses headers
+// ~from: Lynda.com - Essential PHP with MySQL
+function redirect_to( $location = NULL )
+{
+    if( $location != NULL )
+    {
+        header("Location: {$location}");
+        exit;
+    }
+}
+
+
 ?>

@@ -67,8 +67,7 @@
 
                 $hashed_password = sha1( $password1 );
                 register( $username, $email, $hashed_password );
-                $_SESSION['valid_user'] = $username;
-
+                $_SESSION['user_name'] = $username;
 
             }
             catch( Exception $e )
