@@ -18,8 +18,6 @@
             $password1 = $_POST["password1"];
             $password2 = $_POST["password2"];
             
-            session_start();
-
             try
             {
                 // --> check: required fields are not empty  ------------------

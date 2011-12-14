@@ -87,13 +87,12 @@ function valid_email( $email )
 // register a new user
 function register( $username, $email, $password )
 {
-    echo( "Registering: {$username} with mail: {$email} and pw: {$password}" );
+    // echo( "Registering: {$username} with mail: {$email} and pw: {$password}" );
     echo( "<br/>" );
     $result = mysql_query( "
         INSERT INTO users VALUES
         ( '', '" . $username . "', '" . $email . "', '" . $password . "')" );
     check_query( $result );
-    show_all_users();
 }
 
 function show_all_users()

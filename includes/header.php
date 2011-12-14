@@ -11,14 +11,13 @@
     </div>
     <div id="small-navigation">
         <ul>
-            <li>
             <?php
             if( isset( $_SESSION[ 'user_name' ] ))
             {
                 $user_name = $_SESSION[ 'user_name' ];
                 echo( "
-                    logged in as: {$user_name} 
-                    <li> <a href=\"logout.php\">Logout</a></li>"
+                    <li>logged in as: {$user_name}</li>
+                    <li><a href=\"logout.php\">Logout</a></li>"
                 );
             }
             else
@@ -26,7 +25,6 @@
                     <li> <a href=\"login.php\">Login </a></li>
                     ");
             ?>
-            </li>
             <li> <a href="preferences.php"> Preferences </a></li>
             <li> <a href="help.php"> Help </a></li>
             <li> <a href="index.php"> About </a></li>
