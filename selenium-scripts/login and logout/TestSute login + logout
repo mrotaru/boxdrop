@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="LogIn derp">init_db</a></td></tr>
+<tr><td><a href="LogIn derp incorrect password">LogIn derp incorrect password</a></td></tr>
+<tr><td><a href="LogIn derp">LogIn derp</a></td></tr>
+<tr><td><a href="LogOut derp">LogOut derp</a></td></tr>
+<tr><td><a href="LogIn no_such_user">LogIn no_such_user no password</a></td></tr>
+<tr><td><a href="LogIn no_such_user with password">LogIn no_such_user with password</a></td></tr>
+</tbody></table>
+</body>
+</html>
