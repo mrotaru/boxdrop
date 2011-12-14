@@ -48,10 +48,11 @@
                     echo( "you are logged in!<br/>" );
                     
                     $found_user = mysql_fetch_array( $users_password );
-//                    print_r( $found_user );
                     
                     $_SESSION[ 'user_id' ] = $found_user[ 'id' ];
                     $_SESSION[ 'user_name' ] = $found_user[ 'username' ];
+
+                    redirect_to( "index.php" );
                 } 
                 else 
                 {
