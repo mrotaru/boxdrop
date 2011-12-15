@@ -7,6 +7,7 @@
 
 <?php require_once( "includes/connection.php" ); ?>
 <?php require_once( "includes/functions.php" ); ?>
+<?php require_once( "includes/box_drop_functions.php" ); ?>
 <?php include( "includes/head.php" ); ?>
 
 <body>
@@ -16,6 +17,9 @@
         <div id="content-no-margin">
 
             Uploading...
+            <?php
+            ensure_default_folder();
+            ?>
 
         </div>
 

@@ -87,11 +87,10 @@ function valid_email( $email )
 // register a new user
 function register( $username, $email, $password )
 {
-    // echo( "Registering: {$username} with mail: {$email} and pw: {$password}" );
-    echo( "<br/>" );
     $result = mysql_query( "
         INSERT INTO users VALUES
-        ( '', '" . $username . "', '" . $email . "', '" . $password . "')" );
+        ( '', '" . $username . "', '" . $email . "', '" . $password . "')
+        " );
     check_query( $result );
 }
 
@@ -121,5 +120,26 @@ function redirect_to( $location = NULL )
     }
 }
 
+function show_files_superglobal( $file_field_name )
+{
+    echo( "<pre>_FILES:<br/>" );
+    foreach( $_FILES[ $file_field_name ] as $key => $value )
+    {
+        echo( "[ '" . $key . "' ] = " );
+        echo( $value . "<br/>" );
+    }
+    echo( "</pre>" );
+}
+
+function show_post_superglobal()
+{
+    echo( "<pre>_POST:<br/>" );
+    foreach( $_POST as $key => $value )
+    {
+        echo( "[ '" . $key . "' ] = " );
+        echo( $value . "<br/>" );
+    }
+    echo( "</pre>" );
+}
 
 ?>

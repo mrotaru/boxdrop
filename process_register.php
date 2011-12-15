@@ -65,7 +65,20 @@
 
                 $hashed_password = sha1( $password1 );
                 register( $username, $email, $hashed_password );
-                $_SESSION['user_name'] = $username;
+
+                // login the user
+
+                // get his id
+                $result = mysql_query( "
+                    SELECT id, username FROM users
+                    WHERE username = '${username}'
+                    " );
+                check_query( $result );
+               
+                $user_id_name = mysql_fetch_array( $result );
+                
+                $_SESSION['user_id'] = $user_id_name[ 'id' ];
+                $_SESSION['user_name'] = $user_id_name[ 'username' ];
 
             }
             catch( Exception $e )

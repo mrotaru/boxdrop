@@ -15,12 +15,12 @@
 
         <div id="content-no-margin">
 
-            <form method="post" action="upload_process.php" enctype="multipart/form-data"> 
+            <form method="post" action="process_upload.php" enctype="multipart/form-data"> 
                  <div id="form-container">
                     <fieldset>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/> 
-                        <label for="form_data">File to upload:</label> 
-                        <input type="file" name="form_data" size="40"/> 
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760"/> 
+                        <label for="form_file">File to upload:</label> 
+                        <input type="file" name="form_file" size="40"/> 
                         <br/>
                         <label for="form_description">Description:</label> 
                         <input type="text" name="form_description" size="40"/> 
