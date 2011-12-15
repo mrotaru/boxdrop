@@ -16,7 +16,7 @@
             {
                 $user_name = $_SESSION[ 'user_name' ];
                 echo( "
-                    <li>logged in as: {$user_name}</li>
+                    <li>logged in as: <em>{$user_name}</em></li>
                     <li><a href=\"logout.php\">Logout</a></li>"
                 );
             }
@@ -25,9 +25,17 @@
                     <li> <a href=\"login.php\">Login </a></li>
                     ");
             ?>
-            <li> <a href="preferences.php"> Preferences </a></li>
             <li> <a href="help.php"> Help </a></li>
             <li> <a href="index.php"> About </a></li>
+            <?php
+            if( isset( $_SESSION[ 'user_name' ] ))
+            {
+                $user_name = $_SESSION[ 'user_name' ];
+                echo( "
+                    <li><a href=\"files.php\">Files</a></li>"
+                );
+            }
+            ?>
         </ul>
     </div>
 </div>
