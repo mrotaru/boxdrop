@@ -21,12 +21,18 @@
             Mac, and smartphones.
             </p>
 
-            <p>
-            You need to be logged in to use the service.
-            </p>
+            <?php
+                if( !isset( $_SESSION[ 'user_name' ] ))
+                    echo( "
+                        <p>
+                        You need to be logged in to use the service.
+                        </p>
 
-            <input type='button' class='button' value='Login'    onclick="return onClickLogin()" />
-            <input type='button' class='button' value='Register' onclick="return onClickRegister()" />
+                        <input type='button' class='button' value='Login'    onclick='return onClickLogin()' />
+                        <input type='button' class='button' value='Register' onclick='return onClickRegister()' />
+                    ");
+            ?>
+
 
         </div>
 
