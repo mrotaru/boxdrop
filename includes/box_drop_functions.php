@@ -28,7 +28,7 @@ function ensure_default_folder()
     {
         $user_id = $_SESSION[ 'user_id' ];
         $result = mysql_query( "
-            CREATE TABLE user_${user_id}_folder_root (
+            CREATE TABLE IF NOT EXISTS user_${user_id}_folder_root (
                 id int(11) NOT NULL auto_increment,
                 filename varchar(255) NOT NULL,
                 filetype varchar(30),
@@ -37,8 +37,7 @@ function ensure_default_folder()
                 description varchar(100),
                 PRIMARY KEY (id))
             " );
-//        if( !$result )
-//            echo( mysql_error());
+        check_query( $result );
     }
 }
 
