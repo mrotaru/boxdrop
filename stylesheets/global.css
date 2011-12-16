@@ -26,6 +26,7 @@ table
     border-collapse: collapse;
     margin: 20px 0px;
     font: 14px Consolas;
+    background-color: #F9F9F9;
 }
 
 th

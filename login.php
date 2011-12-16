@@ -16,9 +16,9 @@
             <form id="login" action="process_login.php" method="post" name="login">
                 <fieldset>
                     <legend>Login Details</legend>
-                    <label for="username">User ID: </label><input type="text" id="username" name="username"><br/>
-                    <label for="password">Password:</label><input type="password" name="password"><br/>
-                    <input type='submit' id='login-button' name="submit" class='button' value='Login'/>
+                    <label for="username">User ID: </label><input type="text" id="username" name="username"/><br/>
+                    <label for="password">Password:</label><input type="password" name="password"/><br/>
+                   <input type='submit' id='login-button' name="submit" class='button' value='Login'/>
                 </fieldset>
             </form>
         </div>

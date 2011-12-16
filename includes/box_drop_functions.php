@@ -57,32 +57,36 @@ function show_files()
             FROM user_${user_id}_folder_root
             WHERE 1
             " );
-        check_query( $result );
+        //check_query( $result );
 
-        echo( "
-            <table> 
-            <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Description</th>
-            <th>Actions</th>
-            </tr>
-            " );
-
-        while( $file = mysql_fetch_array( $result ) )
+        if( $result )
         {
             echo( "
+                <table> 
                 <tr>
-                <td>{$file[0]}</td>
-                <td>{$file[1]}</td>
-                <td>{$file[2]}</td>
-                <td class='action-cell'>
-                <a href='download.php?id={$file[3]}'>Download</a>
-                </td>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Description</th>
+                <th>Actions</th>
                 </tr>
                 " );
+
+            while( $file = mysql_fetch_array( $result ) )
+            {
+                echo( "
+                    <tr>
+                    <td>{$file[0]}</td>
+                    <td>{$file[1]}</td>
+                    <td>{$file[2]}</td>
+                    <td class='action-cell'>
+                    <a href='download.php?id={$file[3]}'>Download</a>
+                    </td>
+                    </tr>
+                    " );
+            }
+            echo( "</table>" );
         }
-        echo( "</table>" );
+        echo( "<br/>" );
     }
 }
 
