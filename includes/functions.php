@@ -142,4 +142,15 @@ function show_post_superglobal()
     echo( "</pre>" );
 }
 
+function show_get_superglobal()
+{
+    echo( "<pre>_GET:<br/>" );
+    foreach( $_GET as $key => $value )
+    {
+        echo( "[ '" . $key . "' ] = " );
+        echo( $value . "<br/>" );
+    }
+    echo( "</pre>" );
+}
+
 ?>

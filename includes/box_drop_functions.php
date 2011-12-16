@@ -48,7 +48,42 @@ function make_new_folder( $foler_name )
 
 function show_files()
 {
-    // show all the files uploaded by the current user
+    if( isset( $_SESSION[ 'user_id' ] ))
+    {
+        $user_id = $_SESSION[ 'user_id' ];
+        // show all the files uploaded by the current user
+        $result = mysql_query( "
+            SELECT filename, filesize, description, id 
+            FROM user_${user_id}_folder_root
+            WHERE 1
+            " );
+        check_query( $result );
+
+        echo( "
+            <table> 
+            <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Description</th>
+            <th>Actions</th>
+            </tr>
+            " );
+
+        while( $file = mysql_fetch_array( $result ) )
+        {
+            echo( "
+                <tr>
+                <td>{$file[0]}</td>
+                <td>{$file[1]}</td>
+                <td>{$file[2]}</td>
+                <td class='action-cell'>
+                <a href='download.php?id={$file[3]}'>Download</a>
+                </td>
+                </tr>
+                " );
+        }
+        echo( "</table>" );
+    }
 }
 
 ?>

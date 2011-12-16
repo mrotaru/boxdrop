@@ -20,6 +20,46 @@ em
     font-style: normal;
 }
 
+table
+{
+    border: 2px solid #888;
+    border-collapse: collapse;
+    margin: 20px 0px;
+    font: 14px Consolas;
+}
+
+th
+{
+    padding: 5px;
+    background-color: lightgray;
+}
+
+td
+{
+    border: 1px solid lightgray;
+    vertical-align: middle;
+    padding: 0.3em 1em;
+}
+
+.action-cell
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.action-cell a:hover
+{
+    background-color: #EEFFEE;
+}
+
+.action-cell a
+{
+    padding: 0.3em 1em;
+    background-image: url(../images/double-gradient.png);
+    background-repeat: repeat-x;
+    background-color: #DDFFDD;
+}
+
 #header h1
 {
     margin: 0;
