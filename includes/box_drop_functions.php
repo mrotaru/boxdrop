@@ -66,7 +66,7 @@ function show_files()
                 <th>Name</th>
                 <th>Size</th>
                 <th>Description</th>
-                <th colspan='2'>Actions</th>
+                <th colspan='3'>Actions</th>
                 </tr>
                 " );
 
@@ -82,6 +82,9 @@ function show_files()
                     </td>
                     <td class='delete-cell action-cell'>
                     	<a href='delete.php?id={$file[3]}'>Delete</a>
+                    </td>
+                    <td class='rename-cell action-cell'>
+                    	<a href='rename.php?file_id={$file[3]}'>Rename</a>
                     </td>
                     </tr>
                     " );
