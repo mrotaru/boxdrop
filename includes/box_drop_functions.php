@@ -5,21 +5,6 @@
 //  'functions.php' file.
 //
 
-function upload_file()
-{
-    // this option is only available to logged-in users
-
-
-    // check if the root_folder table exists; create if not
-
-
-    // get meta-data about the file, and put it into the table
-    
-
-    // place the file
-
-}
-
 // create the default ( root ) folder, if it doesn't exist
 function ensure_default_folder()
 {
@@ -49,17 +34,18 @@ function show_files()
 {
     if( isset( $_SESSION[ 'user_id' ] ))
     {
+        // get info about all the files uploaded by the current user
         $user_id = $_SESSION[ 'user_id' ];
-        // show all the files uploaded by the current user
         $result = mysql_query( "
             SELECT filename, filesize, description, id 
             FROM user_${user_id}_folder_root
             WHERE 1
             " );
-        //check_query( $result );
+        check_query( $result );
 
         if( $result )
         {
+            // table header
             echo( "
                 <table> 
                 <tr>
@@ -70,6 +56,7 @@ function show_files()
                 </tr>
                 " );
 
+            // display a row for each file
             while( $file = mysql_fetch_array( $result ) )
             {
                 echo( "
@@ -92,6 +79,22 @@ function show_files()
             echo( "</table>" );
         }
         echo( "<br/>" );
+    }
+}
+
+function get_filename_by_id( $id )
+{
+    if( isset( $_SESSION[ 'user_id' ] ))
+    {
+        $user_id = $_SESSION[ 'user_id' ];
+        $result = mysql_query( "
+            SELECT filename
+            FROM user_${user_id}_folder_root
+            WHERE id = ${id}
+            " );
+        check_query( $result );
+        $result_array = mysql_fetch_array( $result );
+        return( $result_array[ 'filename' ] );
     }
 }
 

@@ -1,6 +1,7 @@
 <?php require_once( "includes/session.php" ); ?>
 <?php require_once( "includes/connection.php" ); ?>
 <?php require_once( "includes/functions.php" ); ?>
+<?php require_once( "includes/box_drop_functions.php" ); ?>
 
 <?php
 
@@ -54,7 +55,8 @@ if( isset( $_SESSION[ 'user_id' ] ))
                     $file_id = $_GET[ 'file_id' ];
                 }
 
-                echo( "<legend>New name for file #{$file_id}</legend>" );
+                $filename = get_filename_by_id( $file_id );
+                echo( "<legend>New name for file '{$filename}'</legend>" );
                 ?>
 
                 <label for="new_name"></label>
