@@ -66,7 +66,7 @@ function show_files()
                 <th>Name</th>
                 <th>Size</th>
                 <th>Description</th>
-                <th>Actions</th>
+                <th colspan='2'>Actions</th>
                 </tr>
                 " );
 
@@ -77,8 +77,11 @@ function show_files()
                     <td>{$file[0]}</td>
                     <td>{$file[1]}</td>
                     <td>{$file[2]}</td>
-                    <td class='action-cell'>
-                    <a href='download.php?id={$file[3]}'>Download</a>
+                    <td class='download-cell action-cell'>
+                        <a href='download.php?id={$file[3]}'>Download</a>
+                    </td>
+                    <td class='delete-cell action-cell'>
+                    	<a href='delete.php?id={$file[3]}'>Delete</a>
                     </td>
                     </tr>
                     " );

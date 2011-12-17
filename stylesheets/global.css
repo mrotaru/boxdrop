@@ -42,15 +42,24 @@ td
     padding: 0.3em 1em;
 }
 
-.action-cell
+.download-cell a
 {
-    margin: 0px;
-    padding: 0px;
+    background-color: #DDFFDD;
 }
 
-.action-cell a:hover
+.download-cell a:hover
 {
     background-color: #EEFFEE;
+}
+
+.delete-cell a
+{
+    background-color: #FFDDDD;
+}
+
+.delete-cell a:hover
+{
+    background-color: #FFEEEE;
 }
 
 .action-cell a
@@ -58,7 +67,12 @@ td
     padding: 0.3em 1em;
     background-image: url(../images/double-gradient.png);
     background-repeat: repeat-x;
-    background-color: #DDFFDD;
+}
+
+.action-cell
+{
+    margin: 0px;
+    padding: 0px;
 }
 
 #header h1
