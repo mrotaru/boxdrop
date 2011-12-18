@@ -10,7 +10,7 @@ if( isset( $_POST[ 'submit' ] ))
     if( isset( $_SESSION[ 'user_id' ]) && filled_out( $_POST ))
     {
         make_new_folder( $_SESSION[ 'user_id' ], $_POST[ 'folder_name' ] );
-        redirect_to( "files.php" );
+        redirect_to( "show_folder.php" );
     }
 }
 ?>
