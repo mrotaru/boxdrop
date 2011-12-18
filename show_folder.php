@@ -81,10 +81,10 @@
                                 <td class='download-cell action-cell'>
                                 </td>
                                 <td class='delete-cell action-cell'>
-                                    <a href='delete.php?id={$folder[0]}'>Delete</a>
+                                    <a href='delete.php?folder_id={$folder[0]}'>Delete</a>
                                 </td>
                                 <td class='rename-cell action-cell'>
-                                    <a href='rename.php?file_id={$folder[0]}'>Rename</a>
+                                    <a href='rename.php?folder_id={$folder[0]}'>Rename</a>
                                 </td>
                                 </tr>
                                 " );
