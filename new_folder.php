@@ -9,8 +9,10 @@ if( isset( $_POST[ 'submit' ] ))
 {
     if( isset( $_SESSION[ 'user_id' ]) && filled_out( $_POST ))
     {
-        make_new_folder( $_SESSION[ 'user_id' ], $_POST[ 'folder_name' ] );
-        redirect_to( "show_folder.php" );
+        $folder_name = $_POST[ 'folder_name' ];
+        make_new_folder( $_SESSION[ 'user_id' ], $folder_name );
+        $folder_id = get_folder_id_by_name( $folder_name );
+        redirect_to( "show_folder.php?folder_id=$folder_id" );
     }
 }
 ?>
@@ -30,8 +32,8 @@ if( isset( $_POST[ 'submit' ] ))
             <form method="post" action="new_folder.php" enctype="multipart/form-data"> 
                  <div id="form-container">
                     <fieldset>
-                        <legend>New Folder Name</legend>
-                        <label for="folder_name">Description:</label> 
+                        <legend>New Folder</legend>
+                        <label for="folder_name">Name:</label> 
                         <input type="text" name="folder_name" size="40"/> 
                         <br/>
                         <p>
