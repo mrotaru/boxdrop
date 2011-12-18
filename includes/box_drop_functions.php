@@ -111,91 +111,21 @@ function make_new_folder( $user_id, $folder_name )
     check_query( $result );
 }
 
-function show_files()
+function get_folder_name_by_id( $folder_id )
 {
     $user_id = $_SESSION[ 'user_id' ];
-    if( $user_id )
+    if( isset( $user_id ))
     {
-        // get info about all the files in the root folder
-        $result_files = mysql_query( "
-            SELECT filename, filesize, description, id 
-            FROM user_${user_id}_folder_root
-            WHERE 1
-            " );
-        check_query( $result_files );
-
-        // get the list of folders
-        $result_folders = mysql_query( "
-            SELECT id, name, size
+        $result = mysql_query( "
+            SELECT name
             FROM user_${user_id}_folders
-            WHERE 1
+            WHERE id = ${folder_id}
             " );
-        check_query( $result_folders );
-
-
-        if( $result_files )
-        {
-            // table header
-            echo( "
-                <table> 
-                <tr>
-                <th>Name</th>
-                <th>Size</th>
-                <th>Description</th>
-                <th colspan='3'>Actions</th>
-                </tr>
-                " );
-
-            // display a fow for each folder
-            while( $folder = mysql_fetch_array( $result_folders ) )
-            {
-                if( $folder[0] != 1 ) // skip the root folder
-                echo( "
-                    <tr>
-                    <td>
-                        <a class='dir' href='#'>
-                        {$folder[1]}</a>
-                    </td>
-                    <td>{$folder[2]}</td>
-                    <td></td>
-                    <td class='download-cell action-cell'>
-                        <a href='#'>Download</a>
-                    </td>
-                    <td class='delete-cell action-cell'>
-                    	<a href='delete.php?id={$folder[0]}'>Delete</a>
-                    </td>
-                    <td class='rename-cell action-cell'>
-                    	<a href='rename.php?file_id={$folder[0]}'>Rename</a>
-                    </td>
-                    </tr>
-                    " );
-            }
-
-
-            // display a row for each file
-            while( $file = mysql_fetch_array( $result_files ) )
-            {
-                echo( "
-                    <tr>
-                    <td>{$file[0]}</td>
-                    <td>{$file[1]}</td>
-                    <td>{$file[2]}</td>
-                    <td class='download-cell action-cell'>
-                        <a href='download.php?id={$file[3]}'>Download</a>
-                    </td>
-                    <td class='delete-cell action-cell'>
-                    	<a href='delete.php?id={$file[3]}'>Delete</a>
-                    </td>
-                    <td class='rename-cell action-cell'>
-                    	<a href='rename.php?file_id={$file[3]}'>Rename</a>
-                    </td>
-                    </tr>
-                    " );
-            }
-            echo( "</table>" );
-        }
-        echo( "<br/>" );
+        check_query( $result );
+        $result_array = mysql_fetch_array( $result );
+        return( $result_array[ 'name' ] );
     }
+
 }
 
 function get_filename_by_id( $id )

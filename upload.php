@@ -17,6 +17,10 @@ $upload_errors = array(
     UPLOAD_ERR_EXTENSION 	=> "File upload stopped by extension."
 );
 
+//show_files_superglobal( "form_file" );
+//show_post_superglobal();
+//show_get_superglobal();
+
 if(isset($_POST['submit'])) 
 {
 
@@ -28,9 +32,17 @@ if(isset($_POST['submit']))
     }
     else
     {
-
-//        show_files_superglobal( "form_file" );
-//        show_post_superglobal();
+        // to which folder are we uploading ?
+        if( !isset( $_POST['folder_id' ] ))
+        {
+            $folder_id = 1;
+            $folder_name = 'root';
+        }
+        else
+        { 
+            $folder_id = $_POST[ 'folder_id' ];
+            $folder_name = get_folder_name_by_id( $folder_id );
+        }
 
         // get info from the _FILES superglobal
         $file_name = $_FILES[ "form_file" ][ "name" ];
@@ -49,7 +61,7 @@ if(isset($_POST['submit']))
         // upload to database
         $user_id = $_SESSION[ 'user_id' ];
         $result = mysql_query("
-            INSERT INTO user_${user_id}_folder_root
+            INSERT INTO user_${user_id}_folder_${folder_name}
             ( filename, filetype, filesize, data, description ) 
             ". " VALUES (
                 '$file_name',
@@ -85,6 +97,21 @@ if(isset($_POST['submit']))
                  <div id="form-container">
                     <fieldset>
                         <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/> 
+
+                        <?php
+
+                        // to which folder are we uploading ?
+                        if( !isset( $_GET['folder_id' ] ))
+                            $folder_id = 1;
+                        else
+                            $folder_id = $_GET[ 'folder_id' ];
+                        
+                        // a hidden filed with the folder_id
+                        echo( "
+                            <input type='hidden' name='folder_id' value='${folder_id}'
+                            " );
+                        ?>
+
                         <label for="form_file">File to upload: (1MB max)</label> 
                         <input type="file" name="form_file" size="40"/> 
                         <br/>
@@ -92,7 +119,8 @@ if(isset($_POST['submit']))
                         <input type="text" name="form_description" size="40"/> 
                         <br/>
                         <p>
-                            <input type='submit' name='submit' class='button' value='Upload' onclick="window.location='upload_process.php'" />
+                            <input type='submit' name='submit' class='button' value='Upload'
+                            onclick=\"window.location='upload.php'\" />
                         </p>
                     </fieldset>
                  </div>

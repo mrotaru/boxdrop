@@ -17,8 +17,8 @@
         <div id="content-no-margin">
 
             <?php
-            echo( "Your files:" );
-            show_files();
+            echo( "Your files and folders:" );
+            show_folder( 1 );
             ?>
                 
             <input type='button' class='button' value='Upload' onclick="window.location='upload.php';" />

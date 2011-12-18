@@ -32,7 +32,7 @@
             {
                 $user_name = $_SESSION[ 'user_name' ];
                 echo( "
-                    <li><a href=\"files.php\">Files</a></li>"
+                    <li><a href=\"show_folder.php\">Files</a></li>"
                 );
             }
             ?>
