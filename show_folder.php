@@ -107,7 +107,7 @@
                                 <a href='delete.php?folder_id=${folder_id}&amp;file_id={$file[3]}'>Delete</a>
                             </td>
                             <td class='rename-cell action-cell'>
-                                <a href='rename.php?file_id={$file[3]}'>Rename</a>
+                                <a href='rename.php?folder_id=${folder_id}&amp;file_id={$file[3]}'>Rename</a>
                             </td>
                             </tr>
                             " );

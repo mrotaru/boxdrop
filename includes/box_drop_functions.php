@@ -128,17 +128,20 @@ function get_folder_name_by_id( $folder_id )
 
 }
 
-function get_filename_by_id( $id )
+function get_filename_by_id( $folder_id, $file_id )
 {
     if( isset( $_SESSION[ 'user_id' ] ))
     {
         $user_id = $_SESSION[ 'user_id' ];
+        $folder_name = get_folder_name_by_id( $folder_id );
+
         $result = mysql_query( "
             SELECT filename
-            FROM user_${user_id}_folder_root
-            WHERE id = ${id}
+            FROM user_${user_id}_folder_${folder_name}
+            WHERE id = ${file_id}
             " );
         check_query( $result );
+        
         $result_array = mysql_fetch_array( $result );
         return( $result_array[ 'filename' ] );
     }

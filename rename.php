@@ -7,24 +7,32 @@
 
 if( isset( $_SESSION[ 'user_id' ] ))
 {
-    $user_id = $_SESSION[ 'user_id' ];
-
-    if( isset( $user_id ))
-        if( isset($_POST['submit']) && isset( $_POST[ 'file_id' ]) ) 
+    if( isset( $_SESSION[ 'user_id' ] ))
+    {
+        $user_id = $_SESSION[ 'user_id' ];
+        if( isset( $_POST[ 'submit'] ))
         {
-            if( isset( $_POST[ 'new_name' ] ))
+            if(isset( $_POST[ 'folder_id' ] ) && isset( $_POST[ 'file_id' ])) 
             {
-                $file_id  = $_POST[ 'file_id' ];
-                $new_name = $_POST[ 'new_name' ];
-                $result = mysql_query( "
-                    UPDATE user_${user_id}_folder_root
-                    SET filename = '$new_name' 
-                    WHERE id = '$file_id'
-                    " );
-                check_query( $result );
-                redirect_to( "files.php" );
+                if( isset( $_POST[ 'new_name' ] ))
+                {
+                    $folder_id = $_POST[ 'folder_id' ];
+                    $file_id   = $_POST[ 'file_id' ];
+                    $new_name  = $_POST[ 'new_name' ];
+                    $folder_name = get_folder_name_by_id( $folder_id );
+
+                    $result = mysql_query( "
+                        UPDATE user_${user_id}_folder_${folder_name}
+                        SET filename = '$new_name' 
+                        WHERE id = '$file_id'
+                        " );
+                    check_query( $result );
+                    
+                    redirect_to( "show_folder.php?folder_id=${folder_id}" );
+                }
             }
         }
+    }
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -43,25 +51,21 @@ if( isset( $_SESSION[ 'user_id' ] ))
             <fieldset>
                 <?php
 
-//                show_get_superglobal();
-//                show_post_superglobal();
+                if( isset( $_GET[ 'folder_id' ] ))
+                    $folder_id = $_GET[ 'folder_id' ];
                 
-                if( isset( $_POST[ 'new_name' ] ))
-                {
-                    $file_id = $_POST[ 'file_id' ];
-                }
-                else
-                {
+                if( isset( $_GET[ 'file_id' ] ))
                     $file_id = $_GET[ 'file_id' ];
-                }
 
-                $filename = get_filename_by_id( $file_id );
+                $filename = get_filename_by_id( $folder_id, $file_id );
                 echo( "<legend>New name for file '{$filename}'</legend>" );
                 ?>
 
                 <label for="new_name"></label>
                 <input type="text" name="new_name"/><br/>
                 <?php
+                    if( isset( $folder_id ))
+                        echo( "<input type=\"hidden\" name=\"folder_id\" value={$folder_id} />" );
                     if( isset( $file_id ))
                         echo( "<input type=\"hidden\" name=\"file_id\" value={$file_id} />" );
                 ?>
