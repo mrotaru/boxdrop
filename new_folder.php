@@ -7,11 +7,11 @@
 
 if( isset( $_POST[ 'submit' ] ))
 {
-
-
-
-
-    redirect_to( "files.php" );
+    if( isset( $_SESSION[ 'user_id' ]) && filled_out( $_POST ))
+    {
+        make_new_folder( $_SESSION[ 'user_id' ], $_POST[ 'folder_name' ] );
+        redirect_to( "files.php" );
+    }
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

@@ -67,29 +67,73 @@ function register( $username, $email, $password )
     $user_id_name = mysql_fetch_array( $result );
     $user_id = $user_id_name[ 'id' ];
 
-    // create root folder, and tabel for other folders
+    // create root folder, and table for other folders
     init_user( $user_id );
 }
 
-function make_new_folder( $foler_name )
+function make_new_folder( $user_id, $folder_name )
 {
+    // check if not already existing
+    $result = mysql_query( "
+        SELECT *
+        FROM user_${user_id}_folders
+        WHERE name = '$folder_name'
+        " );
+    check_query( $result );
+    if( mysql_num_rows( $result ) != 0 )
+        return 1;
 
+    // create the folder
+    $result = mysql_query( "
+        CREATE TABLE IF NOT EXISTS user_${user_id}_folder_$folder_name (
+            id int(11) NOT NULL auto_increment,
+            filename varchar(255) NOT NULL,
+            filetype varchar(30),
+            filesize int(11) NOT NULL,
+            data LONGBLOB NOT NULL,
+            description varchar(100),
+            PRIMARY KEY (id))
+        " );
+    check_query( $result );
+
+    // add the folder to the table of folders
+    $result = mysql_query( "
+        INSERT INTO user_${user_id}_folders
+        ( id, name, size, nr_files, public )
+        VALUES (
+            '',
+            '${folder_name}',
+            0,
+            0,
+            false
+        )
+        " );
+    check_query( $result );
 }
 
 function show_files()
 {
-    if( isset( $_SESSION[ 'user_id' ] ))
+    $user_id = $_SESSION[ 'user_id' ];
+    if( $user_id )
     {
-        // get info about all the files uploaded by the current user
-        $user_id = $_SESSION[ 'user_id' ];
-        $result = mysql_query( "
+        // get info about all the files in the root folder
+        $result_files = mysql_query( "
             SELECT filename, filesize, description, id 
             FROM user_${user_id}_folder_root
             WHERE 1
             " );
-        check_query( $result );
+        check_query( $result_files );
 
-        if( $result )
+        // get the list of folders
+        $result_folders = mysql_query( "
+            SELECT id, name, size
+            FROM user_${user_id}_folders
+            WHERE 1
+            " );
+        check_query( $result_folders );
+
+
+        if( $result_files )
         {
             // table header
             echo( "
@@ -102,8 +146,34 @@ function show_files()
                 </tr>
                 " );
 
+            // display a fow for each folder
+            while( $folder = mysql_fetch_array( $result_folders ) )
+            {
+                if( $folder[0] != 1 ) // skip the root folder
+                echo( "
+                    <tr>
+                    <td>
+                        <a class='dir' href='#'>
+                        {$folder[1]}</a>
+                    </td>
+                    <td>{$folder[2]}</td>
+                    <td></td>
+                    <td class='download-cell action-cell'>
+                        <a href='#'>Download</a>
+                    </td>
+                    <td class='delete-cell action-cell'>
+                    	<a href='delete.php?id={$folder[0]}'>Delete</a>
+                    </td>
+                    <td class='rename-cell action-cell'>
+                    	<a href='rename.php?file_id={$folder[0]}'>Rename</a>
+                    </td>
+                    </tr>
+                    " );
+            }
+
+
             // display a row for each file
-            while( $file = mysql_fetch_array( $result ) )
+            while( $file = mysql_fetch_array( $result_files ) )
             {
                 echo( "
                     <tr>
