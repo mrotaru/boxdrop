@@ -101,12 +101,10 @@
                             <td>{$file[1]}</td>
                             <td>{$file[2]}</td>
                             <td class='download-cell action-cell'>
-                                <a href=
-                                    'download.php?folder_id=${folder_id}&file_id={$file[3]}'>Download</a>
+                                <a href= 'download.php?folder_id=${folder_id}&amp;file_id={$file[3]}'>Download</a>
                             </td>
                             <td class='delete-cell action-cell'>
-                                <a href='
-                                    delete.php?folder_id=${folder_id}&file_id={$file[3]}'>Delete</a>
+                                <a href='delete.php?folder_id=${folder_id}&amp;file_id={$file[3]}'>Delete</a>
                             </td>
                             <td class='rename-cell action-cell'>
                                 <a href='rename.php?file_id={$file[3]}'>Rename</a>
