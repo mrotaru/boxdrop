@@ -14,7 +14,7 @@ require_once( "includes/functions.php" );
 
 // delete 'users' table
 //------------------------------------------------------------------------------
-$res = mysql_query( "DROP TABLE users" );
+$res = mysql_query( "DROP TABLE IF EXISTS users" );
 check_query( $res );
 
 // create 'users' table

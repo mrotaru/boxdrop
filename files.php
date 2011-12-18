@@ -21,9 +21,8 @@
             show_files();
             ?>
                 
-
             <input type='button' class='button' value='Upload' onclick="window.location='upload.php';" />
-            <input type='button' class='button' value='New Folder' onclick="" />
+            <input type='button' class='button' value='New Folder' onclick="window.location='new_folder.php'" />
 
         </div>
 

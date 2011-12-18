@@ -29,8 +29,6 @@ if(isset($_POST['submit']))
     else
     {
 
-        ensure_default_folder();
-
 //        show_files_superglobal( "form_file" );
 //        show_post_superglobal();
 

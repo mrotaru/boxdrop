@@ -6,28 +6,74 @@
 //
 
 // create the default ( root ) folder, if it doesn't exist
-function ensure_default_folder()
+// create the table holding information about all the folders of the current user
+function init_user( $user_id )
 {
-    // make sure the user is logged in
-    if( isset( $_SESSION[ 'user_id' ] ))
-    {
-        $user_id = $_SESSION[ 'user_id' ];
-        $result = mysql_query( "
-            CREATE TABLE IF NOT EXISTS user_${user_id}_folder_root (
-                id int(11) NOT NULL auto_increment,
-                filename varchar(255) NOT NULL,
-                filetype varchar(30),
-                filesize int(11) NOT NULL,
-                data LONGBLOB NOT NULL,
-                description varchar(100),
-                PRIMARY KEY (id))
+    // create a table for the folders the current user has
+    $result = mysql_query( "
+        CREATE TABLE IF NOT EXISTS user_${user_id}_folders (
+            id int(11) NOT NULL auto_increment,
+            name varchar(255) NOT NULL,
+            size int(11),
+            nr_files int(6),
+            public boolean,
+            PRIMARY KEY (id))
             " );
-        check_query( $result );
-    }
+    check_query( $result );
+
+    // create the root folder
+    $result = mysql_query( "
+        CREATE TABLE IF NOT EXISTS user_${user_id}_folder_root (
+            id int(11) NOT NULL auto_increment,
+            filename varchar(255) NOT NULL,
+            filetype varchar(30),
+            filesize int(11) NOT NULL,
+            data LONGBLOB NOT NULL,
+            description varchar(100),
+            PRIMARY KEY (id))
+        " );
+    check_query( $result );
+
+    // add the root folder to the table of folders
+    $result = mysql_query( "
+        INSERT INTO user_${user_id}_folders
+        ( id, name, size, nr_files, public )
+        VALUES (
+            '',
+            'root',
+            0,
+            0,
+            false
+        )
+        " );
+    check_query( $result );
+}
+
+// register a new user
+function register( $username, $email, $password )
+{
+    $result = mysql_query( "
+        INSERT INTO users VALUES
+        ( '', '" . $username . "', '" . $email . "', '" . $password . "')
+        " );
+    check_query( $result );
+
+    // get the user's id
+    $result = mysql_query( "
+        SELECT id, username FROM users
+        WHERE username = '${username}'
+        " );
+    check_query( $result );
+    $user_id_name = mysql_fetch_array( $result );
+    $user_id = $user_id_name[ 'id' ];
+
+    // create root folder, and tabel for other folders
+    init_user( $user_id );
 }
 
 function make_new_folder( $foler_name )
 {
+
 }
 
 function show_files()

@@ -84,16 +84,6 @@ function valid_email( $email )
     return false;
 }
                 
-// register a new user
-function register( $username, $email, $password )
-{
-    $result = mysql_query( "
-        INSERT INTO users VALUES
-        ( '', '" . $username . "', '" . $email . "', '" . $password . "')
-        " );
-    check_query( $result );
-}
-
 function show_all_users()
 {
     echo( "All users in table 'users': </br>" );
