@@ -51,7 +51,7 @@
                 }
 
 
-                if( $result_files )
+                if( mysql_num_rows( $result_files ) != 0 )
                 {
                     // table header
                     echo( "
@@ -79,7 +79,6 @@
                                 <td>{$folder[2]}</td>
                                 <td></td>
                                 <td class='download-cell action-cell'>
-                                    <a href='#'>Download</a>
                                 </td>
                                 <td class='delete-cell action-cell'>
                                     <a href='delete.php?id={$folder[0]}'>Delete</a>

@@ -142,8 +142,8 @@ function get_folder_id_by_name( $folder_name )
         $result_array = mysql_fetch_array( $result );
         return( $result_array[ 'id' ] );
     }
-
 }
+
 function get_filename_by_id( $folder_id, $file_id )
 {
     if( isset( $_SESSION[ 'user_id' ] ))
