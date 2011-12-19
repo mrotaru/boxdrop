@@ -18,11 +18,30 @@ require_once( "includes/box_drop_functions.php" );
 $res = mysql_query( "DROP TABLE IF EXISTS users" );
 check_query( $res );
 
+// delete any folders user 1 created
+//------------------------------------------------------------------------------
+$res = mysql_query( "
+    SELECT id, name
+    FROM user_1_folders
+    WHERE 1
+    " );
+//check_query( $res );
+
+if( $res )
+    while( $folder = mysql_fetch_array( $res ))
+    {
+        $folder_id   = $folder[0];
+        $folder_name = $folder[1];
+        $res2 = mysql_query( "
+            DROP TABLE `user_1_folder_$folder_name`
+            " );
+        check_query( $res2 );
+    }
+
 // delete 'folders' table for user 1
 //------------------------------------------------------------------------------
 $res = mysql_query( "DROP TABLE IF EXISTS user_1_folders" );
 check_query( $res );
-
 
 // create 'users' table
 //------------------------------------------------------------------------------
