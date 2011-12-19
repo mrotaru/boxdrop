@@ -39,9 +39,11 @@
                 check_query( $result_files );
 
                 // for the root folder
+                $result_folders = 0;
                 if( $folder_id == 1 ) 
                 {
                     // get the list of folders
+                    global $result_folders;
                     $result_folders = mysql_query( "
                         SELECT id, name, size
                         FROM user_${user_id}_folders
@@ -51,7 +53,7 @@
                 }
 
 
-                if( mysql_num_rows( $result_files ) != 0 )
+                if( mysql_num_rows( $result_files ) != 0 || mysql_num_rows( $result_folders ) > 1 )
                 {
                     // table header
                     echo( "
