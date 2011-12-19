@@ -52,8 +52,18 @@
                     check_query( $result_folders );
                 }
 
+                // determine if the file/folders table needs to be displayed
+                $show_table = false;
+                if( $folder_id == 1 )
+                {
+                    if( mysql_num_rows( $result_folders ) > 1 || mysql_num_rows( $result_files ) > 0 )
+                        $show_table = true;
+                }
+                else if( mysql_num_rows( $result_files ) > 0 )
+                    $show_table = true;
 
-                if( mysql_num_rows( $result_files ) != 0 || mysql_num_rows( $result_folders ) > 1 )
+                // generate the file/folders table, if needed
+                if( $show_table )
                 {
                     // table header
                     echo( "
