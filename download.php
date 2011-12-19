@@ -5,12 +5,9 @@
 <?php
 if( isset( $_SESSION[ 'user_id' ] ))
 {
-    show_post_superglobal();
-    show_get_superglobal();
-
     $user_id = $_SESSION[ 'user_id' ];
     $file_id = $_GET[ 'file_id' ];
-    $foler_name = get_folder_name_by_id( $_GET[ 'folder_id' ] );
+    $folder_name = get_folder_name_by_id( $_GET[ 'folder_id' ] );
 
     $query = "
         SELECT filename, data, filetype, filesize
