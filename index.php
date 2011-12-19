@@ -33,6 +33,7 @@
                     ");
             ?>
 
+            <?php include( "includes/validate.php" ); ?>
 
         </div>
 
