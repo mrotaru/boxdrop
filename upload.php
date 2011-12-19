@@ -96,15 +96,19 @@ if(isset($_POST['submit']))
             <form method="post" action="upload.php" enctype="multipart/form-data"> 
                  <div id="form-container">
                     <fieldset>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/> 
 
                         <?php
 
                         // to which folder are we uploading ?
-                        if( !isset( $_GET['folder_id' ] ))
-                            $folder_id = 1;
-                        else
+                        if( isset( $_POST[ 'folder_id' ] ))
+                            $folder_id = $_POST[ 'folder_id' ];
+                        else if( isset( $_GET[ 'folder_id' ] ))
                             $folder_id = $_GET[ 'folder_id' ];
+                        else if ( !isset( $folder_id ))
+                            $folder_id = 1;
+
+                        $folder_name = get_folder_name_by_id( $folder_id );
+                        echo( "<legend>Upload to: ${folder_name}</legend>" );
                         
                         // a hidden filed with the folder_id
                         echo( "
@@ -112,6 +116,7 @@ if(isset($_POST['submit']))
                             " );
                         ?>
 
+                        <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/> 
                         <label for="form_file">File to upload: (1MB max)</label> 
                         <input type="file" name="form_file" size="40"/> 
                         <br/>
@@ -119,6 +124,13 @@ if(isset($_POST['submit']))
                         <input type="text" name="form_description" size="40"/> 
                         <br/>
                         <p>
+                            <?php
+                                echo ("
+                                    <input type='button' class='button' value='<< Back'
+                                    onclick=\"window.location='show_folder.php?folder_id=$folder_id';\" />
+                                  ");
+                            ?>
+
                             <input type='submit' name='submit' class='button' value='Upload'
                             onclick=\"window.location='upload.php'\" />
                         </p>

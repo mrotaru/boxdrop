@@ -21,16 +21,16 @@
             $user_id = $_SESSION[ 'user_id' ];
             if( $user_id )
             {
-                echo( "Your files and folders:" );
-
                 // show root folder, by default
                 if( !isset( $_GET[ 'folder_id' ] ))
                     $folder_id = 1;
                 else
                     $folder_id = $_GET[ 'folder_id' ];
 
-                // get info about all the files in the folder
                 $folder_name = get_folder_name_by_id( $folder_id );
+                echo( "Your files and folders in '{$folder_name}':" );
+
+                // get info about all the files in the folder
                 $result_files = mysql_query( "
                     SELECT filename, filesize, description, id 
                     FROM user_${user_id}_folder_${folder_name}
@@ -119,6 +119,13 @@
             ?>
                 
             <?php
+
+            // "<< Back " button
+            if( $folder_id != 1 )
+                echo ("
+                    <input type='button' class='button' value='<< Back'
+                    onclick=\"window.location='show_folder.php?folder_id=1';\" />
+                  ");
 
             // "Upload" button
             echo ("
