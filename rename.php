@@ -9,12 +9,21 @@ if( isset( $_SESSION[ 'user_id' ] ))
 {
     if( isset( $_SESSION[ 'user_id' ] ))
     {
+        show_get_superglobal();
+        show_post_superglobal();
         $user_id = $_SESSION[ 'user_id' ];
         if( isset( $_POST[ 'submit'] ))
         {
             $folder_id = $_POST[ 'folder_id' ];
+            $file_id   = $_POST[ 'file_id' ];
             $folder_name = get_folder_name_by_id( $folder_id );
             $new_name  = $_POST[ 'new_name' ];
+
+            if( preg_match( '/[^a-z_]/i', $new_name ))
+            {
+                redirect_to( "rename_php?error=1" );
+                exit();
+            }
 
             // renaming a file ?
             if(isset( $folder_id ) && isset( $file_id ) && isset( $new_name )) 
