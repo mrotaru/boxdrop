@@ -9,8 +9,6 @@ if( isset( $_SESSION[ 'user_id' ] ))
 {
     if( isset( $_SESSION[ 'user_id' ] ))
     {
-        show_get_superglobal();
-        show_post_superglobal();
         $user_id = $_SESSION[ 'user_id' ];
         if( isset( $_POST[ 'submit'] ))
         {
@@ -21,7 +19,10 @@ if( isset( $_SESSION[ 'user_id' ] ))
 
             if( preg_match( '/[^a-z_]/i', $new_name ))
             {
-                redirect_to( "rename_php?error=1" );
+                if(isset( $folder_id ) && isset( $file_id )) 
+                    redirect_to( "rename.php?folder_id=${folder_id}&file_id=${file_id}&error=1" );
+                else if( isset( $folder_id ) && !isset( $file_id ))
+                    redirect_to( "rename.php?folder_id=${folder_id}&error=1" );
                 exit();
             }
 
@@ -96,6 +97,13 @@ if( isset( $_SESSION[ 'user_id' ] ))
                 }
 
                 echo( "<legend>{$message}</legend>" );
+
+                // errors ?
+                if( isset( $_GET[ 'error' ] ))
+                    if( $_GET[ 'error'] == 1 )
+                        echo("
+                        <p class=error>The new name must contain only alpha-numeric characters and underscores.</p>
+                        ");
                 ?>
 
                 <label for="new_name"></label>
