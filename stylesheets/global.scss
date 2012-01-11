@@ -1,0 +1,392 @@
+$body-bg:                   #342E3D;
+$header-bg:                 #B5919A;
+// table
+$table-border-col:          #888;
+$table-bg:                  #F9F9F9;
+$th-bg:                     silver;
+$td-bg:                     silver;
+// action-cells
+$download-cell-bg:          #DDFFDD;
+$download-cell-bg-hover:    #EEFFEE;
+$delete-cell-bg:            #FFDDDD;
+$delete-cell-bg-hover:      #FFEEEE;
+$rename-cell-bg:            #F7E891;
+$rename-cell-bg-hover:      #FDFAD3;
+//
+$header-initial-letter:     #D6AA5C;
+$search-bg:                 #DBCCCE;
+$search-bg-hover:           #F2F2F2;
+$a-border-bottom:           #8A6D81;
+$nav-a-hover:               #635369;
+$containter-bg:             #DBB0B5;
+$button-hover:              #BD95B0;
+
+body
+{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $body-bg;
+}
+
+#header
+{
+    background-color: $header-bg;
+    border-bottom: 2px solid black;
+    height: 5.3em;
+    clear: both;
+    
+    h1
+    {
+        margin: 0;
+        font: 35px Impact;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    /*    text-shadow: 2px 1px $a-border-bottom;*/
+        text-decoration: underline;
+    }
+}
+
+em
+{
+    font-weight: bold;
+    font-style: normal;
+}
+
+table
+{
+    border: 2px solid $table-border-col;
+    border-collapse: collapse;
+    margin: 20px 0px;
+    font: 14px Consolas;
+    background-color: $table-bg;
+}
+
+th
+{
+    padding: 5px;
+    background-color: $th-bg;
+}
+
+td
+{
+    border: 1px solid $td-bg;
+    vertical-align: middle;
+    padding: 0.3em 1em;
+}
+
+.download-cell a
+{ 
+    background-color: $download-cell-bg; 
+    &:hover { background-color: $download-cell-bg-hover; }
+}
+.delete-cell a          
+{ 
+    background-color: $delete-cell-bg;
+    &:hover { background-color: $delete-cell-bg-hover; }
+}
+.rename-cell a          
+{ 
+    background-color: $rename-cell-bg;
+    &:hover    { background-color: $rename-cell-bg-hover; }
+}
+
+
+.action-cell
+{
+    margin: 0px;
+    padding: 0px;
+    
+    a
+    {
+        padding: 0.3em 1em;
+        background-image: url(../images/double-gradient.png);
+        background-repeat: repeat-x;
+    }
+}
+
+.dir
+{
+    margin-left: -10px;
+    padding-left: 24px;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    background-image: url(../images/folder.png);
+}
+
+
+.h1-initial
+{
+    color: $header-initial-letter;
+    text-decoration: underline;
+}
+
+#logo
+{
+    position: relative;
+    padding: 20px;
+    width: 150px;
+    float: left;
+}
+
+#search-div
+{
+    float: right;
+    margin: 10px;
+}
+
+#search
+{
+    height: 22px;
+    position: relative;
+    right: -3px;
+    top: 2px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid;
+    /*-webkit-border-radius:  10px 0 0 10px;/*
+	/*-moz-border-radius:  10px 0 0 10px;*/
+    color: gray;
+    font: italic bold 12px Verdana;
+    background-color: $search-bg;
+    &:hover { background-color: $search-bg-hover; }
+}
+
+#make-div-link
+{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0; 
+    z-index: 1 
+}
+
+#footer
+{
+    margin: 0;
+    padding: 10px;
+    background-color: $header-bg;
+    height: 30px;
+    color: $body-bg;
+    font: 10px Verdana;
+    clear: both;
+    text-align: center;
+
+    a
+    {
+        color: $body-bg;
+        border-bottom: 1px dotted $a-border-bottom;
+        text-decoration: none;
+
+        &:hover
+        {
+            background-color: $search-bg;
+            border-bottom: 1px solid $a-border-bottom;
+        }
+
+    }
+}
+
+
+#container
+{
+    background-color: $containter-bg;
+    border: 3px solid black;
+}
+
+#navigation
+{
+    padding: 0;
+    margin: 1px;
+    float: left;
+    left: 0;
+    width: 10em;
+    background-color: $containter-bg;
+
+    ul
+    {
+        padding: 0;
+        margin:  0;
+    }
+
+    li 
+    {
+        padding: 0;
+        margin:  0;
+        display: block;
+        border-bottom: solid 1px #000;
+    }
+
+    a
+    {
+        &:hover { background-color: $nav-a-hover; }
+        &:link, &:visited
+        {
+            color: #000;
+            display: block;
+            padding: 20px;
+            font: 13px Georgia;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+    }
+}
+
+#small-navigation
+{
+    font: 11px Verdana;
+    float: right;
+    position: relative;
+    top: 0.8em;
+
+    a
+    {
+        color: $body-bg;
+        border-bottom: 1px dotted $a-border-bottom;
+        text-decoration: none;
+
+        &:hover
+        {
+            color: $body-bg;
+            background-color: $search-bg;
+            border-bottom: 1px dotted $a-border-bottom;
+            text-decoration: none;
+        }
+    }
+    
+    li
+    {
+        white-space: nowrap;
+        display: inline;
+        border-right: 1px solid $a-border-bottom;
+        padding: 0 0.75em;
+    }
+
+    ul
+    {
+        font-size: 10px;
+        list-style: none outside none;
+        text-align: right;
+    }
+}
+
+#content
+{
+    margin-left: 9em;
+    background-color: $search-bg-hover;
+    font: 18px Georgia;
+    padding: 20px;
+    height: 400px;
+    overflow: auto;
+}
+
+form#login
+{
+    font: 16px Calibri;
+}
+
+form label
+{
+    clear: left;
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+#login-button, #register-button
+{
+    margin-top: 10px;
+    margin-left: 10em;
+}
+
+#content-no-margin h2
+{
+    font: 24px "Arial Narrow";
+}
+
+#content-no-margin
+{
+    clear: both;
+    background-color: $search-bg-hover;
+    font: 16px Calibri;
+    padding: 20px;
+    height: 400px;
+    overflow: auto;
+}
+
+fieldset
+{
+    padding: 20px;
+}
+
+.button
+{
+    margin-top:    1px;
+    padding: 4px 7px;
+    width:  100px;
+    border-bottom: 2px solid $body-bg;
+    border-top:    1px solid $body-bg;
+    border-left:   1px solid $body-bg;
+    border-right:  2px solid $body-bg;
+    color: $search-bg;
+    height: 35px;
+    background-color: $a-border-bottom;
+    font: bold small-caps 14px Verdana;
+}
+
+.button:hover
+{
+    color: white;
+    background-color: $button-hover;
+}
+
+.button:active
+{
+    margin-top:    0px;
+    border-bottom: 1px solid $body-bg;
+    border-top:    2px solid $body-bg;
+    border-left:   2px solid $body-bg;
+    border-right:  1px solid $body-bg;
+    color: $search-bg;
+    background-color: $a-border-bottom;
+}
+
+.button-small
+{
+    margin: 0px;
+    margin-top:    1px;
+    padding-bottom: 3px;
+    position: relative;
+    top: 1px;
+    width:  100px;
+    /*-webkit-border-radius:  0 10px 10px 0;/*
+	/*-moz-border-radius:  0 10px 10px 0;*/
+    border-bottom: 2px solid $body-bg;
+    border-top:    1px solid $body-bg;
+    border-left:   1px solid $body-bg;
+    border-right:  2px solid $body-bg;
+    color: $search-bg;
+    height: 24px;
+    background-color: $a-border-bottom;
+    font: bold small-caps 12px Verdana;
+}
+
+.button-small:hover
+{
+    color: white;
+    background-color: $button-hover;
+}
+
+.button-small:active
+{
+    margin-top:    0px;
+    border-bottom: 1px solid $body-bg;
+    border-top:    2px solid $body-bg;
+    border-left:   2px solid $body-bg;
+    border-right:  1px solid $body-bg;
+    color: $search-bg;
+    background-color: $a-border-bottom;
+}
