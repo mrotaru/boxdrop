@@ -53,20 +53,15 @@ function mysql_prep( $string ) {
     $magic_quotes_active = get_magic_quotes_gpc();
     $new_enough_php = function_exists( "mysql_real_escape_string" ); // i.e. PHP >= v4.3.0
 
-    if( $new_enough_php ) // PHP v4.3.0 or higher
-    {
+    if( $new_enough_php ) { // PHP v4.3.0 or higher
         // undo any magic quote effects so mysql_real_escape_string can do the work
-        if( $magic_quotes_active ) 
-        { 
+        if( $magic_quotes_active ) { 
             $string = stripslashes( $string ); 
         }
         $string = mysql_real_escape_string( $string );
-    } 
-    else // before PHP v4.3.0
-    {
+    } else  { // before PHP v4.3.0
         // if magic quotes aren't already on then add slashes manually
-        if( !$magic_quotes_active ) 
-        { 
+        if( !$magic_quotes_active ) { 
             $string = addslashes( $string ); 
         }
         // if magic quotes are active, then the slashes already exist
